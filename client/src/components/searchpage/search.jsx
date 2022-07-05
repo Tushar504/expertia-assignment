@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import {searched} from "../../redux/action"
+import {searched,remove} from "../../redux/action"
 import { useDispatch,useSelector} from "react-redux"
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import {useLocation} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import CircularProgress from '@mui/material/CircularProgress';
 export const Search=()=>{
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -36,7 +36,7 @@ export const Search=()=>{
                         <p>Profile: {ele.profile}</p>
                         <p>Location: {ele.location}</p>
                         <Button onClick={async()=>{
-                             let res=await fetch("http://localhost:1200/getcart/carts",{
+                             let res=await fetch("https://expertia-assignment.herokuapp.com/getcart/carts",{
                                 method:"POST",
                                 body:JSON.stringify({userID:Data.user._id,jobID:ele._id}),
                                 headers: {
@@ -50,16 +50,17 @@ export const Search=()=>{
                            return  alert(`${data.message}`)
                         }}  variant="contained">Apply</Button>
                     </div>)
-            }):null}
+            }):<CircularProgress color="success" />}
             </div>
             <div className="Pages">
             {pages.length>0?pages.map((ele)=>{
                   return  <Button onClick={()=>{
-                     
+                         dispatch(remove([]))
                         return navigate(`/?pagesize=${5}&page=${ele}`)
                   }} key={ele} disabled={ele===+page?true:false} variant="contained">{ele}</Button>
             }):null}
             </div>
+            <div>{pages.length===0?'Empty':null}</div>
         </div>
     )
 }

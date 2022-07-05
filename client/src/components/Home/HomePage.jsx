@@ -1,10 +1,11 @@
 import { useEffect } from "react"
-import { login,getJobs} from "../../redux/action"
+import { login,getJobs,remove} from "../../redux/action"
 import { useDispatch,useSelector} from "react-redux"
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import {useLocation} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 import './HomePage.css'
 export const Homepage=()=>{
     const dispatch=useDispatch()
@@ -34,7 +35,7 @@ export const Homepage=()=>{
                         <p>Profile: {ele.profile}</p>
                         <p>Location: {ele.location}</p>
                         <Button onClick={async()=>{
-                             let res=await fetch("http://localhost:1200/getcart/carts",{
+                             let res=await fetch("https://expertia-assignment.herokuapp.com/getcart/carts",{
                                 method:"POST",
                                 body:JSON.stringify({userID:Data.user._id,jobID:ele._id}),
                                 headers: {
@@ -48,12 +49,12 @@ export const Homepage=()=>{
                            return  alert(`${data.message}`)
                         }}  variant="contained">Apply</Button>
                     </div>)
-            }):null}
+            }):<CircularProgress color="success" />}
             </div>
             <div className="Pages">
             {pages.length>0?pages.map((ele)=>{
                   return  <Button onClick={()=>{
-                     
+                             dispatch(remove([]))
                         return navigate(`/?pagesize=${5}&page=${ele}`)
                   }} key={ele} disabled={ele===+page?true:false} variant="contained">{ele}</Button>
             }):null}

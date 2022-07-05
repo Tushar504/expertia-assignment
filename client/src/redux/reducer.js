@@ -1,4 +1,4 @@
-import {ADD_USER,ADD_JOBS,ADD_CART,ADD_SEARCH} from "./action"
+import {ADD_USER,ADD_JOBS,ADD_CART,ADD_SEARCH,REMOVE} from "./action"
 
 export const reducer=(store={user:{},jobs:[],cart:[],search:[]},{type,payload})=>{
              switch(type){
@@ -10,6 +10,8 @@ export const reducer=(store={user:{},jobs:[],cart:[],search:[]},{type,payload})=
                      return {...store,cart:payload}
                case ADD_SEARCH:
                      return {...store,search:payload}
+               case REMOVE:
+                    return {...store,jobs:payload,cart:payload,search:payload}
                  default:
                      return store
              }

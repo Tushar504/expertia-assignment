@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import {getCart} from "../../redux/action"
+import {getCart,remove} from "../../redux/action"
 import { useDispatch,useSelector} from "react-redux"
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import {useLocation} from "react-router-dom";
 import { useNavigate,useParams } from "react-router-dom";
-
+import CircularProgress from '@mui/material/CircularProgress';
 export const Applied=()=>{
     const Data=useSelector(store=>store)
     const id=useParams().id
@@ -38,12 +38,12 @@ export const Applied=()=>{
                         <p>Profile: {ele.jobID.profile}</p>
                         <p>Location: {ele.jobID.location}</p>
                      </div>)
-            }):null}
+            }):<CircularProgress color="success" />}
             </div>
             <div className="Pages">
             {pages.length>0?pages.map((ele)=>{
                   return  <Button onClick={()=>{
-                     
+                    dispatch(remove([]))
                         return navigate(`/applied/62c41607f4341b168384482c?pagesize=${5}&page=${ele}`)
                   }} key={ele} disabled={ele===+page?true:false} variant="contained">{ele}</Button>
             }):null}
