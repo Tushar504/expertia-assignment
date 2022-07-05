@@ -54,9 +54,9 @@ export const Search=()=>{
             </div>
             <div className="Pages">
             {pages.length>0?pages.map((ele)=>{
-                  return  <Button onClick={()=>{
+                  return  <Button onClick={()=>{ 
                          dispatch(remove([]))
-                        return navigate(`/?pagesize=${4}&page=${ele}`)
+                        return navigate(`/search?text=${text}&pagesize=${4}&page=${ele}`)
                   }} key={ele} disabled={ele===+page?true:false} variant="contained">{ele}</Button>
             }):null}
             </div>
