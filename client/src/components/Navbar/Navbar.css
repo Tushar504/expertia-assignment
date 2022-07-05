@@ -1,0 +1,16 @@
+.NavbarMainDiv{
+    background-color: rgb(25,118,210);
+    display: flex;
+    justify-content: space-around;
+    color:white;
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+    top: 0px;
+}
+.NavbarMainDiv>a{
+    text-decoration: none;
+    color: white;
+    margin-top: 5px;
+}
