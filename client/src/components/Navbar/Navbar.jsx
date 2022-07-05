@@ -19,13 +19,13 @@ export const Navbar=()=>{
                 if(text!==""){
                    dispatch(remove([]))
                     input.current.value=""
-                    return navigate(`/search?text=${text.charAt(0).toUpperCase() + text.slice(1)}&pagesize=5&page=1`)
+                    return navigate(`/search?text=${text.charAt(0).toUpperCase() + text.slice(1)}&pagesize=4&page=1`)
                  
                 }
                 else{return}
               }} sx={{color:'white',fontWeight:'bold'}} variant="outlined">Search</Button>
               </div>
-              <Link to={`/applied/62c41607f4341b168384482c?pagesize=5&page=1`}>Job Applied by you</Link>
+              <Link to={`/applied/62c41607f4341b168384482c?pagesize=4&page=1`}>Job Applied by you</Link>
          
         </div>
     )

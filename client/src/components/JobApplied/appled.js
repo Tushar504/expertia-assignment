@@ -13,7 +13,7 @@ export const Applied=()=>{
     const navigate=useNavigate()
     const search = useLocation().search;
     const page = new URLSearchParams(search).get('page')||1
-    const pagesize=new URLSearchParams(search).get('pagesize')||5
+    const pagesize=new URLSearchParams(search).get('pagesize')||4
     const [pages,setPages]=useState([])
     useEffect(()=>{ 
       
@@ -44,7 +44,7 @@ export const Applied=()=>{
             {pages.length>0?pages.map((ele)=>{
                   return  <Button onClick={()=>{
                     dispatch(remove([]))
-                        return navigate(`/applied/62c41607f4341b168384482c?pagesize=${5}&page=${ele}`)
+                        return navigate(`/applied/62c41607f4341b168384482c?pagesize=${4}&page=${ele}`)
                   }} key={ele} disabled={ele===+page?true:false} variant="contained">{ele}</Button>
             }):null}
             </div>
