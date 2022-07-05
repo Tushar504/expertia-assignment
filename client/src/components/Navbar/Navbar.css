@@ -14,3 +14,11 @@
     color: white;
     margin-top: 5px;
 }
+
+@media only Screen and (min-width:0px) and (max-width:720px){
+    .NavbarMainDiv{
+        justify-content: space-between;
+    }
+    
+
+}

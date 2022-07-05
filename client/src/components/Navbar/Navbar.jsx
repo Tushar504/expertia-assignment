@@ -14,7 +14,7 @@ export const Navbar=()=>{
         <div className="NavbarMainDiv">
              <Link to={"/"}>Home</Link>
             <div>
-              <input ref={input} onChange={(e)=>setText(e.target.value)} type='text' placeholder='City Name'/>
+              <input  ref={input} onChange={(e)=>setText(e.target.value)} type='text' placeholder='City Name'/>
               <Button onClick={()=>{
                 if(text!==""){
                    dispatch(remove([]))
